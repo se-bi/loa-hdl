@@ -33,7 +33,8 @@ entity adc_ad7266_single_ended_module is
       -- direct access to the read adc samples
       adc_values_o : out adc_ad7266_values_type(CHANNELS - 1 downto 0);
 
-      clk : in std_logic
+      reset : in std_logic;
+      clk   : in std_logic
       );
 
 end adc_ad7266_single_ended_module;
@@ -164,6 +165,7 @@ begin
          bus_i => bus_i,
          reg_o => reg_o,
          reg_i => reg_i,
+         reset => reset,
          clk   => clk);
 
 -- ADC interface module 

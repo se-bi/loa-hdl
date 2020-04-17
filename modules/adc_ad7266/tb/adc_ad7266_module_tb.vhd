@@ -23,19 +23,6 @@ end adc_ad7266_module_tb;
 
 
 architecture tb of adc_ad7266_module_tb is
-   
-   component adc_ad7266_single_ended_module
-      generic (
-         BASE_ADDRESS : integer range 0 to 16#7FFF#;
-         CHANNELS     : positive);
-      port (
-           adc_out_p    : out adc_ad7266_spi_out_type;
-           adc_in_p     : in  adc_ad7266_spi_in_type;
-           bus_o        : out busdevice_out_type;
-           bus_i        : in  busdevice_in_type;
-           adc_values_o : out adc_ad7266_values_type(CHANNELS - 1 downto 0);
-           clk          : in  std_logic);
-   end component;
 
    -- component generics
    constant   BASE_ADDRESS : integer range 0 to 16#7FFF# := 0;
@@ -50,6 +37,7 @@ architecture tb of adc_ad7266_module_tb is
                                             we   => '0',
                                             re   => '0');
    signal adc_values_o : adc_ad7266_values_type(CHANNELS - 1 downto 0);
+   signal reset        : std_logic := '0';
    signal clk          : std_logic := '1';
 
     -- adc_stimulus parametres (vectors are mirrored)
@@ -62,7 +50,7 @@ begin  -- tb
 
    
    -- component instantiation
-   DUT: adc_ad7266_single_ended_module
+   DUT: entity work.adc_ad7266_single_ended_module
       generic map (
          BASE_ADDRESS => BASE_ADDRESS,
          CHANNELS     => CHANNELS)
@@ -72,6 +60,7 @@ begin  -- tb
          bus_o        => bus_o,
          bus_i        => bus_i,
          adc_values_o => open,
+         reset        => reset,
          clk          => clk);
 
   -- clock generation
