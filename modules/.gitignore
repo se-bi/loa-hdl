@@ -1,1 +1,4 @@
 */tb/simulation/
+*_tb.o
+*_test.o
+*bin
