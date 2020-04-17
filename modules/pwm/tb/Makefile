@@ -25,5 +25,5 @@ GHDL_SIM_OPT = --stop-time=1000us
 
 # Load default options for GHDL.
 # Defines make [all|compile|run|view|clean]
-include makefile.ghdl.mk
+include ../../makefile.ghdl.mk
 
