@@ -1,0 +1,6 @@
+sim:
+  image: ghdl/ghdl:buster-llvm-7
+  script:
+    - pushd modules/
+    - bash run-all-simulations.sh
+    - popd
