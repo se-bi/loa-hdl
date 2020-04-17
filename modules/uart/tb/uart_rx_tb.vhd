@@ -31,6 +31,7 @@ architecture behavourial of uart_rx_tb is
    signal rx_error  : std_logic;
    signal full      : std_logic := '1';
    signal clk_rx_en : std_logic := '0';
+   signal reset     : std_logic := '0';
    signal clk       : std_logic := '0';
    
 begin
@@ -45,6 +46,7 @@ begin
          error_p   => rx_error,
          full_p    => full,
          clk_rx_en => clk_rx_en,
+         reset     => reset,
          clk       => clk);
 
    -- clock generation
