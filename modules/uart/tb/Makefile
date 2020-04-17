@@ -9,6 +9,7 @@ TESTBENCH ?= uart_rx_tb
 # VHDL files
 ifeq ($(TESTBENCH), uart_rx_tb)
 FILES = uart_tb_pkg.vhd\
+	../../core/hdl/reset_pkg.vhd\
 	../hdl/*.vhd
 GHDL_SIM_OPT = --stop-time=60us
 
