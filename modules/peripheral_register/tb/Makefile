@@ -1,6 +1,6 @@
 
 # Name of the testbench without extenstion
-#TESTBENCH = peripheral_register_tb
+TESTBENCH ?= peripheral_register_tb
 #TESTBENCH = double_buffering_tb
 #TESTBENCH = reg_file_tb
 #TESTBENCH = reg_file_bram_double_buffered_tb
@@ -9,9 +9,10 @@
 
 # Common files
 FILES = \
+	../../core/hdl/bus_pkg.vhd \
+	../../core/hdl/reset_pkg.vhd \
 	../../utils/hdl/utils_pkg.vhd \
 	../../utils/hdl/edge_detect.vhd \
-	../../spislave/hdl/bus_pkg.vhd \
 	../../peripheral_register/hdl/reg_file_pkg.vhd
 
 # Testbench-specific files

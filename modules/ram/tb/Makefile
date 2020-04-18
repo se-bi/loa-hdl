@@ -5,9 +5,9 @@ TESTBENCH = xilinx_block_ram_tb
 # VHDL files
 ifeq ($(TESTBENCH),xilinx_block_ram_tb)
 FILES =  \
-	../../hdl/utils_pkg.vhd \
-	../../hdl/xilinx_block_ram_pkg.vhd \
-	../../hdl/xilinx_block_ram.vhd
+	../../utils/hdl/utils_pkg.vhd \
+	../hdl/xilinx_block_ram_pkg.vhd \
+	../hdl/xilinx_block_ram.vhd
 endif
 
 # Default settings for gtkwave (visable signal etc.)

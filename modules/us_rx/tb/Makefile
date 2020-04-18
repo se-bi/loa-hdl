@@ -5,11 +5,11 @@ TESTBENCH = us_rx_module_tb
 
 # VHDL files
 ifeq ($(TESTBENCH), us_rx_module_tb)
-FILES = ../../hdl/us_rx_module.vhd \
-	../../hdl/us_rx_module_pkg.vhd \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/adc_ltc2351_pkg.vhd \
-	../../hdl/signalprocessing_pkg.vhd
+FILES = ../hdl/us_rx_module.vhd \
+	../hdl/us_rx_module_pkg.vhd \
+	../../core/hdl/bus_pkg.vhd \
+	../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+	../../signalprocessing/hdl/signalprocessing_pkg.vhd
 else ifeq ($(TESTBENCH), entity_name2_tb)
 FILES = ../hdl/*.vhd
 endif

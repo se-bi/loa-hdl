@@ -9,57 +9,51 @@
 #TESTBENCH ?= dc_driver_stage_converter_tb
 TESTBENCH ?= bldc_driver_stage_converter_tb
 
+FILES = ../../core/hdl/bus_pkg.vhd \
+	../../core/hdl/reset_pkg.vhd \
+	../../utils/hdl/utils_pkg.vhd \
+	../../utils/hdl/clock_divider.vhd \
+	../hdl/motor_control_pkg.vhd \
+	../../peripheral_register/hdl/reg_file.vhd \
+	../../peripheral_register/hdl/reg_file_pkg.vhd
+
 # VHDL files
 ifeq ($(TESTBENCH),symmetric_pwm_tb)
-FILES =  \
+FILES += \
 	../hdl/symmetric_pwm.vhd
 GHDL_SIM_OPT = --stop-time=500us
 else ifeq ($(TESTBENCH),symmetric_pwm_deadtime_tb)
-FILES = \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/motor_control_pkg.vhd \
-	../../hdl/symmetric_pwm_deadtime.vhd \
-	../../hdl/symmetric_pwm.vhd \
-	../../hdl/deadtime.vhd
+FILES += \
+	../hdl/symmetric_pwm_deadtime.vhd \
+	../hdl/symmetric_pwm.vhd \
+	../hdl/deadtime.vhd
 GHDL_SIM_OPT = --stop-time=500us
 else ifeq ($(TESTBENCH),commutation_tb)
-FILES = \
-	../../hdl/motor_control_pkg.vhd \
-	../../hdl/commutation.vhd \
-	../../hdl/symmetric_pwm_deadtime.vhd \
-	../../hdl/symmetric_pwm.vhd \
-	../../hdl/deadtime.vhd
+FILES += \
+	../hdl/commutation.vhd \
+	../hdl/symmetric_pwm_deadtime.vhd \
+	../hdl/symmetric_pwm.vhd \
+	../hdl/deadtime.vhd
 GHDL_SIM_OPT = --stop-time=1200us
 else ifeq ($(TESTBENCH),comparator_module_tb)
-FILES = \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/*.vhd \
-	../../hdl/*.vhd \
-	../../hdl/*.vhd
+FILES += \
+	../hdl/*.vhd
 GHDL_SIM_OPT = --stop-time=400us
 else ifeq ($(TESTBENCH),dc_motor_module_extended_tb)
-FILES = \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/*.vhd \
-	../../hdl/*.vhd
+FILES += \
+	../hdl/*.vhd
 GHDL_SIM_OPT = --stop-time=400us
 else ifeq ($(TESTBENCH),dc_driver_stage_converter_tb)
-FILES = \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/motor_control_pkg.vhd \
-	../../hdl/driver_stages.vhd
+FILES += \
+	../hdl/driver_stages.vhd
 GHDL_SIM_OPT = --stop-time=1us
 else ifeq ($(TESTBENCH),bldc_driver_stage_converter_tb)
-FILES = \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/motor_control_pkg.vhd \
-	../../hdl/driver_stages.vhd
+FILES += \
+	../hdl/driver_stages.vhd
 GHDL_SIM_OPT = --stop-time=1us
 else
-FILES =  \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/*.vhd \
-	../../hdl/*.vhd
+FILES += \
+	../hdl/*.vhd
 GHDL_SIM_OPT = --stop-time=1000us
 endif
 

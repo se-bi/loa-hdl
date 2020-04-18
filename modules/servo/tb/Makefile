@@ -1,16 +1,18 @@
 
 # Name of the testbench without extenstion
 #TESTBENCH = servo_sequencer_tb
-TESTBENCH = servo_module_tb
+TESTBENCH ?= servo_module_tb
+
+FILES = ../hdl/servo_sequencer.vhd
 
 # VHDL files
 ifeq ($(TESTBENCH), servo_sequencer_tb)
-FILES = ../../hdl/servo_sequencer.vhd
 GHDL_SIM_OPT = --stop-time=25ms
 else ifeq ($(TESTBENCH), servo_module_tb)
-FILES = ../../hdl/*.vhd \
-	../../hdl/utils_pkg.vhd \
-	../../hdl/bus_pkg.vhd
+FILES += ../hdl/servo_module.vhd \
+	../hdl/servo_channel.vhd \
+	../../core/hdl/bus_pkg.vhd \
+	../../utils/hdl/utils_pkg.vhd
 GHDL_SIM_OPT = --stop-time=27ms
 endif
 

@@ -1,18 +1,21 @@
 
 # Name of the testbench without extenstion
 #TESTBENCH = pwm_tb
-TESTBENCH = pwm_module_tb
+TESTBENCH ?= pwm_module_tb
+
+FILES = ../hdl/pwm.vhd \
+	../hdl/pwm_pkg.vhd
 
 # VHDL files
 ifeq ($(TESTBENCH),pwm_tb)
-FILES =  \
-	../../hdl/pwm.vhd \
-	../../hdl/pwm_pkg.vhd
+# pass
 else
-FILES =  \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/*.vhd \
-	../../hdl/*.vhd
+FILES +=  \
+	../../core/hdl/bus_pkg.vhd \
+	../../utils/hdl/utils_pkg.vhd \
+	../../utils/hdl/clock_divider.vhd \
+	../hdl/pwm_module.vhd \
+	../hdl/pwm_module_pkg.vhd
 endif
 
 # Default settings for gtkwave (visable signal etc.)

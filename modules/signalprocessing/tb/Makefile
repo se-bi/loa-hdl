@@ -10,110 +10,78 @@
 #TESTBENCH = goertzel_pipelined_sim_tb
 #TESTBENCH = timestamp_tb
 
-#TESTBENCH = io_test
+TESTBENCH ?= io_test
+
+FILES = \
+../../utils/hdl/utils_pkg.vhd \
+../../core/hdl/bus_pkg.vhd \
+../../core/hdl/reset_pkg.vhd \
+../../peripheral_register/hdl/reg_file_pkg.vhd \
+../../peripheral_register/hdl/reg_file.vhd \
+../hdl/signalprocessing_pkg.vhd
 
 # VHDL files
 ifeq ($(TESTBENCH), goertzel_tb)
-FILES = \
-../../hdl/utils_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/adc_ltc2351.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/adc_ltc2351_model.vhd \
-../../hdl/signalprocessing_pkg.vhd \
-../../hdl/goertzel.vhd 
+FILES += \
+../hdl/goertzel.vhd
 else ifeq ($(TESTBENCH), goertzel_pipelined_tb)
-FILES = \
-../../hdl/utils_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/adc_ltc2351.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/adc_ltc2351_model.vhd \
-../../hdl/signalprocessing_pkg.vhd \
-../../hdl/goertzel_pipelined.vhd 
+FILES += \
+../../adc_ltc2351/hdl/adc_ltc2351.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_model.vhd \
+../hdl/goertzel_pipelined.vhd
 else ifeq ($(TESTBENCH), goertzel_pipeline_tb)
-FILES = \
-../../hdl/utils_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/adc_ltc2351.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/adc_ltc2351_model.vhd \
-../../hdl/signalprocessing_pkg.vhd \
-../../hdl/goertzel_pipeline.vhd
+FILES += \
+../../adc_ltc2351/hdl/adc_ltc2351.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_model.vhd \
+../hdl/goertzel_pipeline.vhd
 else ifeq ($(TESTBENCH), goertzel_muxes_tb)
-FILES = \
-../../hdl/utils_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/adc_ltc2351.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/adc_ltc2351_model.vhd \
-../../hdl/signalprocessing_pkg.vhd \
-../../hdl/goertzel_muxes.vhd
+FILES += \
+../../adc_ltc2351/hdl/adc_ltc2351.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_model.vhd \
+../hdl/goertzel_muxes.vhd
 else ifeq ($(TESTBENCH), goertzel_control_unit_tb)
-FILES = \
-../../hdl/utils_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/adc_ltc2351.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/adc_ltc2351_model.vhd \
-../../hdl/signalprocessing_pkg.vhd \
-../../hdl/goertzel_control_unit.vhd
+FILES += \
+../../adc_ltc2351/hdl/adc_ltc2351.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_model.vhd \
+../hdl/goertzel_control_unit.vhd
 else ifeq ($(TESTBENCH), goertzel_pipelined_v2_tb)
-FILES = \
-../../hdl/utils_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/adc_ltc2351.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/adc_ltc2351_model.vhd \
-../../hdl/signalprocessing_pkg.vhd \
-../../hdl/goertzel_control_unit.vhd \
-../../hdl/goertzel_muxes.vhd \
-../../hdl/goertzel_pipelined_v2.vhd
+FILES += \
+../../adc_ltc2351/hdl/adc_ltc2351.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_model.vhd \
+../hdl/goertzel_control_unit.vhd \
+../hdl/goertzel_muxes.vhd \
+../hdl/goertzel_pipelined_v2.vhd \
+../hdl/goertzel_pipeline.vhd
 else ifeq ($(TESTBENCH), goertzel_pipelined_sim_tb)
-FILES = \
-../../hdl/utils_pkg.vhd \
-../../hdl/edge_detect.vhd \
-../../hdl/xilinx_block_ram_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/spislave_pkg.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/xilinx_block_ram_pkg.vhd \
-../../hdl/xilinx_block_ram.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/double_buffering.vhd \
-../../hdl/reg_file_bram_double_buffered.vhd \
-../../hdl/signalprocessing_pkg.vhd \
-../../hdl/timestamp_generator.vhd \
-../../hdl/timestamp_taker.vhd \
+FILES += \
+../../utils/hdl/edge_detect.vhd \
+../../ram/hdl/xilinx_block_ram_pkg.vhd \
+../../spislave/hdl/spislave_pkg.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+../../ram/hdl/xilinx_block_ram_pkg.vhd \
+../../ram/hdl/xilinx_block_ram.vhd \
+../../peripheral_register/hdl/double_buffering.vhd \
+../../peripheral_register/hdl/reg_file_bram_double_buffered.vhd \
+../hdl/timestamp_generator.vhd \
+../hdl/timestamp_taker.vhd \
 ./signal_sources_pkg.vhd \
 ./signal_sources.vhd \
-../../hdl/goertzel_control_unit.vhd \
-../../hdl/goertzel_muxes.vhd \
-../../hdl/goertzel_pipeline.vhd \
-../../hdl/goertzel_pipelined_v2.vhd
+../hdl/goertzel_control_unit.vhd \
+../hdl/goertzel_muxes.vhd \
+../hdl/goertzel_pipeline.vhd \
+../hdl/goertzel_pipelined_v2.vhd
 else ifeq ($(TESTBENCH), timestamp_tb)
-FILES = \
-../../hdl/bus_pkg.vhd \
-../../hdl/spislave_pkg.vhd \
-../../hdl/reg_file_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/adc_ltc2351_pkg.vhd \
-../../hdl/timestamp_generator.vhd \
-../../hdl/timestamp_taker.vhd \
-../../hdl/signalprocessing_pkg.vhd \
+FILES += \
+../../spislave/hdl/spislave_pkg.vhd \
+../../adc_ltc2351/hdl/adc_ltc2351_pkg.vhd \
+../hdl/timestamp_generator.vhd \
+../hdl/timestamp_taker.vhd \
+../hdl/signalprocessing_pkg.vhd \
 timestamp_tb.vhd
 else ifeq ($(TESTBENCH), real_tb)
 FILES = \

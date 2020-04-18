@@ -7,11 +7,11 @@ TESTBENCH = ws2812_8x1_tb
 
 # Common files
 FILES = \
-	../../hdl/ws2812_pkg.vhd \
-	../../hdl/ws2812_cfg_pkg.vhd \
-	../../hdl/ws2812.vhd \
-	../../hdl/ws2812_8x1.vhd \
-	../../hdl/reset_pkg.vhd \
+	../hdl/ws2812_pkg.vhd \
+	../hdl/ws2812_cfg_pkg.vhd \
+	../hdl/ws2812.vhd \
+	../hdl/ws2812_8x1.vhd \
+	../../core/hdl/reset_pkg.vhd \
 
 # Default settings for gtkwave (visable signal etc.)
 #  use gtkwave > File > Write Save File (Strg + S) to generate the file

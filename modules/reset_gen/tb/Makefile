@@ -5,8 +5,8 @@ TESTBENCH ?= reset_gen_tb
 # VHDL files
 
 FILES = \
-../../hdl/reset_gen_pkg.vhd\
-../../hdl/reset_gen.vhd
+../hdl/reset_gen_pkg.vhd\
+../hdl/reset_gen.vhd
 
 GHDL_SIM_OPT = --stop-time=60us
 

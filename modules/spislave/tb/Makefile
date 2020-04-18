@@ -4,9 +4,9 @@ TESTBENCH = spi_slave_tb
 
 # VHDL files
 FILES =  \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/spislave_pkg.vhd \
-	../../hdl/spislave.vhd 
+	../../core/hdl/bus_pkg.vhd \
+	../hdl/spislave_pkg.vhd \
+	../hdl/spislave.vhd
 
 # Default settings for gtkwave (visable signal etc.)
 #  use gtkwave > File > Write Save File (Strg + S) to generate the file
