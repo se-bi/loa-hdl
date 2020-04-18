@@ -167,7 +167,8 @@ entity ir_rx_module is
       -- Timestamp input from the timestamp module
       timestamp_i_p : in timestamp_type;
 
-      clk : in std_logic
+      reset : in std_logic;
+      clk   : in std_logic
       );
 
 end ir_rx_module;
@@ -240,7 +241,7 @@ begin  -- structural
 
 
    ----------------------------------------------------------------------------
-   -- Component Instantiation
+   -- Entity Instantiation
    ----------------------------------------------------------------------------
 
    -- Register file for the goertzel coefficients,
@@ -255,6 +256,7 @@ begin  -- structural
          bus_i => bus_i_p,
          reg_o => reg_coefs_s,
          reg_i => reg_coefs_s,
+         reset => reset,
          clk   => clk
          );
 
@@ -328,7 +330,7 @@ begin  -- structural
          inputs_p => adc_values_signed_clipped_s,  -- adc_values_signed_s,
          clk      => clk);
 
-   timestamp_taker_1 : timestamp_taker
+   timestamp_taker_1 : entity work.timestamp_taker
       generic map (
          BASE_ADDRESS => BASE_ADDRESS_TIMESTAMP)
       port map (
@@ -338,6 +340,7 @@ begin  -- structural
          bank_y_i_p    => bank_y_s,
          bus_o         => bus_timestamp_s,
          bus_i         => bus_i_p,
+         reset         => reset,
          clk           => clk);
 
    -- Sync extraction

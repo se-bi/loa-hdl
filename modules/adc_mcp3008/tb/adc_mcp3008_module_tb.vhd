@@ -42,12 +42,13 @@ architecture tb of adc_mcp3008_module_tb is
    signal sck_p  : std_logic;
 
    -- clock
-   signal clk : std_logic := '1';
+   signal clk   : std_logic := '1';
+   signal reset : std_logic := '0';
 
 begin  -- tb
 
-   -- component instantiation
-   DUT : adc_mcp3008_module
+   -- entity instantiation
+   DUT : entity work.adc_mcp3008_module
       generic map (
          BASE_ADDRESS => BASE_ADDRESS)
       port map (
@@ -56,6 +57,7 @@ begin  -- tb
          bus_o        => bus_o,
          bus_i        => bus_i,
          adc_values_o => open,
+         reset        => reset,
          clk          => clk);
 
 

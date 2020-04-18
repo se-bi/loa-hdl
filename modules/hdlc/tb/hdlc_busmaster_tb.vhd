@@ -45,11 +45,12 @@ architecture behavourial of hdlc_busmaster_tb is
   signal enc_busy          : std_logic          := '0';
 
   -- clock
-  signal Clk : std_logic := '1';
+  signal Clk   : std_logic := '1';
+  signal reset : std_logic := '0';
 
 begin  -- architecture behavourial
 
-  -- component instantiation
+  -- entity instantiation
   DUT_enc : work.hdlc_pkg.hdlc_enc
     port map(
       din_p  => tb_to_enc,
@@ -79,6 +80,7 @@ begin  -- architecture behavourial
       din_p  => x"1234",
       bus_o  => bus_to_master,
       bus_i  => master_to_bus,
+      reset  => reset,
       clk    => clk);
 
   -- clock generation

@@ -36,7 +36,8 @@ entity imotor_transceiver is
       -- Clocks for UART and sender
       timer_in_p : in imotor_timer_type;
 
-      clk : in std_logic
+      reset : in std_logic;
+      clk   : in std_logic
       );
 
 end imotor_transceiver;
@@ -88,7 +89,7 @@ begin  -- architecture behavourial
    ----------------------------------------------------------------------------
 
    -----------------------------------------------------------------------------
-   -- Component instantiations
+   -- Entity instantiations
    -----------------------------------------------------------------------------
    imotor_sender_1 : entity work.imotor_sender
       generic map (
@@ -124,6 +125,7 @@ begin  -- architecture behavourial
          empty_p   => uart_start_ns,
          re_p      => open,
          clk_tx_en => timer_in_p.tx,
+         reset      => reset,
          clk       => clk);
 
    uart_rx_1 : entity work.uart_rx
@@ -135,6 +137,7 @@ begin  -- architecture behavourial
          error_p   => parity_error_s,
          full_p    => '0',              -- always get data
          clk_rx_en => timer_in_p.rx,
+         reset      => reset,
          clk       => clk);
 
    --imotor_uart_rx_1 : entity work.imotor_uart_rx

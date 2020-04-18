@@ -29,7 +29,8 @@ entity adc_mcp3008_module is
       -- direct access to the read adc samples
       adc_values_o : out adc_mcp3008_values_type(7 downto 0);
 
-      clk : in std_logic
+      reset : in std_logic;
+      clk   : in std_logic
       );
 
 end adc_mcp3008_module;
@@ -136,12 +137,12 @@ begin
    end process comb_proc;
 
    -----------------------------------------------------------------------------
-   -- Component instantiations
+   -- Entity instantiations
    -----------------------------------------------------------------------------
 
    -- Register file to present ADC values to bus
    -- and configuration
-   reg_file_1 : reg_file
+   reg_file_1 : entity work.reg_file
       generic map (
          BASE_ADDRESS => BASE_ADDRESS,
          REG_ADDR_BIT => 3)
@@ -150,6 +151,7 @@ begin
          bus_i => bus_i,
          reg_o => reg_o,
          reg_i => reg_i,
+         reset => reset,
          clk   => clk);
 
    -- ADC interface module 

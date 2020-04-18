@@ -49,11 +49,12 @@ architecture tb of imotor_transceiver_tb is
    signal imotor_clock_s : imotor_timer_type;
 
    -- clock
-   signal clk : std_logic := '1';
+   signal clk   : std_logic := '1';
+   signal reset : std_logic := '0';
 
 begin  -- architecture tb
 
-   -- component instantiation
+   -- entity instantiation
    DUT : entity work.imotor_transceiver
       generic map (
          DATA_WORDS_SEND => DATA_WORDS_SEND,
@@ -65,6 +66,7 @@ begin  -- architecture tb
          tx_out_p   => tx_out_p,
          rx_in_p    => rx_in_can,
          timer_in_p => imotor_clock_s,
+         reset      => reset,
          clk        => clk);
 
    imotor_timer : entity work.imotor_timer

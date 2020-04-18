@@ -60,7 +60,8 @@ architecture tb of ir_rx_module_tb is
    signal timestamp_s : timestamp_type := (others => '0');
 
    -- clock
-   signal clk : std_logic := '1';
+   signal clk   : std_logic := '1';
+   signal reset : std_logic := '0';
 
 begin  -- tb
 
@@ -80,6 +81,7 @@ begin  -- tb
          ack_i_p           => ack_p,
          clk_sample_en_i_p => clk_sample_en,
          timestamp_i_p     => timestamp_s,
+         reset             => reset,
          clk               => clk);
 
    -- clock generation

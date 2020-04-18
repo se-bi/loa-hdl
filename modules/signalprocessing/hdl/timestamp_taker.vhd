@@ -46,7 +46,8 @@ entity timestamp_taker is
       bus_i : in  busdevice_in_type;
 
       -- Clock
-      clk : in std_logic
+      reset : in std_logic;
+      clk   : in std_logic
       );
 
 end timestamp_taker;
@@ -84,7 +85,7 @@ begin  -- architecture behavourial
    ----------------------------------------------------------------------------
    -- When the goertzel is finished, the goertzel_done_s signal is strobed.
    -- Copy timestamp to the register at this moment.
-   timestamp_taker : process (clk) is
+   timestamp_taker_p : process (clk) is
    begin  -- process timestamp_taker
       if rising_edge(clk) then          -- rising clock edge
          if trigger_i_p = '1' then
@@ -99,7 +100,7 @@ begin  -- architecture behavourial
             end if;
          end if;
       end if;
-   end process timestamp_taker;
+   end process timestamp_taker_p;
 
    -----------------------------------------------------------------------------
    -- Component instantiations
@@ -115,6 +116,7 @@ begin  -- architecture behavourial
          bus_i => bus_i_s,              -- the modified address
          reg_o => open,                 -- read only register
          reg_i => reg_timestamp_s,
+         reset => reset,
          clk   => clk);
 
 end behavioural;

@@ -56,7 +56,8 @@ architecture behavioral of fsmcslave_tb is
   signal reg_i : std_logic_vector(15 downto 0) := (others => '0');
 
   -- clock
-  signal Clk : std_logic := '1';
+  signal Clk   : std_logic := '1';
+  signal reset : std_logic := '0';
 
 begin  -- tb
 
@@ -66,8 +67,8 @@ begin  -- tb
   --
   -----------------------------------------------------------------------------
 
-  -- component instantiation
-  DUT : fsmcslave
+  -- entity instantiation
+  DUT : entity work.fsmcslave
     port map (
       fsmcslave_o => fsmcslave_o,
       fsmcslave_i => fsmcslave_i,
@@ -75,7 +76,7 @@ begin  -- tb
       bus_i       => bus_i,
       clk         => clk);
 
-  reg_1 : peripheral_register
+  reg_1 : entity work.peripheral_register
     generic map (
       BASE_ADDRESS => 16#000A#)
     port map (
@@ -83,6 +84,7 @@ begin  -- tb
       bus_i  => bus_o,
       dout_p => reg_o,
       din_p  => reg_i,
+      reset  => reset,
       clk    => clk);
 
 
