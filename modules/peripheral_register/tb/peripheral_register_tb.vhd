@@ -40,6 +40,7 @@ architecture tb of peripheral_register_tb is
        we   => '0',
        re   => '0');
    signal clk   : std_logic := '0';
+   signal reset : std_logic := '0';
 
    signal reg_readback : std_logic_vector(15 downto 0);
 
@@ -56,8 +57,8 @@ begin
 
    reg_readback <= not reg;
 
-   -- component instantiation
-   DUT : peripheral_register
+   -- entity instantiation
+   DUT : entity work.peripheral_register
       generic map (
          BASE_ADDRESS => BASE_ADDRESS)
       port map (
@@ -65,6 +66,7 @@ begin
          din_p  => reg_readback,                 -- read back the written values
          bus_o  => bus_o,
          bus_i  => bus_i,
+         reset  => reset,
          clk    => clk);
 
    -- clock generation

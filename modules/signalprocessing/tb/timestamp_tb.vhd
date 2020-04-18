@@ -45,10 +45,11 @@ architecture tb of timestamp_tb is
    signal bank_x_s  : std_logic := '0';
    signal bank_y_s  : std_logic := '1';
 
-   signal clk : std_logic := '0';
+   signal clk   : std_logic := '0';
+   signal reset : std_logic := '0';
 
 begin
-   -- component instantiation
+   -- entity instantiation
    timestamp_generator_1 : entity work.timestamp_generator
       port map (
          timestamp_o_p => timestamp,
@@ -64,6 +65,7 @@ begin
          bank_y_i_p    => bank_y_s,
          bus_o         => bus_to_stm,
          bus_i         => bus_i,
+         reset         => reset,
          clk           => clk);
 
    -- clock generation

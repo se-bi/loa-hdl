@@ -38,7 +38,7 @@ architecture tb of serialiser_tb is
 begin  -- tb
 
    ---------------------------------------------------------------------------
-   -- component instatiation
+   -- entity instatiation
    ---------------------------------------------------------------------------
 
    serialiser_1 : entity work.serialiser
@@ -63,7 +63,8 @@ begin  -- tb
    fractional_clock_divider_1 : entity work.fractional_clock_divider
       generic map (
          DIV => 250,
-         MUL => 1)
+         MUL => 1,
+         WIDTH => 8)
       port map (
          clk_out_p => clk_bit,
          clk       => clk);

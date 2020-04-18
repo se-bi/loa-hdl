@@ -39,15 +39,16 @@ architecture tb of reg_file_tb is
    signal reg_i : reg_file_type(2**REG_ADDR_BIT-1 downto 0);
 
    -- clock
-   signal clk : std_logic := '1';
+   signal clk   : std_logic := '1';
+   signal reset : std_logic := '0';
 
    type comment_type is (idle, write, read);
    signal comment : comment_type := idle;
 
 begin  -- tb
 
-   -- component instantiation
-   DUT : reg_file
+   -- entity instantiation
+   DUT : entity work.reg_file
       generic map (
          BASE_ADDRESS => BASE_ADDRESS,
          REG_ADDR_BIT => REG_ADDR_BIT)
@@ -56,6 +57,7 @@ begin  -- tb
          bus_i => bus_i,
          reg_o => reg_o,
          reg_i => reg_i,
+         reset => reset,
          clk   => clk);
 
    -- clock generation

@@ -43,16 +43,17 @@ architecture tb of uss_tx_module_tb is
   signal bus_o : busdevice_out_type;
   signal bus_i : busdevice_in_type;
 
-  signal clk : std_logic := '0';
+  signal clk   : std_logic := '0';
+  signal reset : std_logic := '0';
 
 begin  -- tb
 
 
   ---------------------------------------------------------------------------
-  -- component instatiation
+  -- entity instatiation
   ---------------------------------------------------------------------------
 
-  uss_tx_module_1 : uss_tx_module
+  uss_tx_module_1 : entity work.uss_tx_module
     generic map (
       BASE_ADDRESS => BASE_ADDRESS)
     port map (
@@ -65,7 +66,8 @@ begin  -- tb
       bus_o => bus_o,
       bus_i => bus_i,
 
-      clk => clk);
+      reset => reset,
+      clk   => clk);
 
   -------------------------------------------------------------------------------
   -- Stimuli

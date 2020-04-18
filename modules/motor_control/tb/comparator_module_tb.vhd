@@ -38,10 +38,11 @@ architecture tb of comparator_module_tb is
        re   => '0');
 
    signal clk   : std_logic := '0';
+   signal reset : std_logic := '0';
 
 begin
-   -- component instantiation
-   DUT : comparator_module
+   -- entity instantiation
+   DUT : entity work.comparator_module
       generic map (
          BASE_ADDRESS => BASE_ADDRESS,
          CHANNELS     => CHANNELS)
@@ -50,6 +51,7 @@ begin
          overflow_p => overflow,
          bus_o      => bus_o,
          bus_i      => bus_i,
+         reset      => reset,
          clk        => clk);
 
    -- clock generation

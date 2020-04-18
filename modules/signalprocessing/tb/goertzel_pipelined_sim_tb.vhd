@@ -37,7 +37,8 @@ architecture tb of goertzel_pipelined_sim_tb is
 
 -- signals
 
-   signal clk : std_logic := '0';
+   signal clk   : std_logic := '0';
+   signal reset : std_logic := '0';
 
    constant FREQUENCIES : natural := 2;
    constant CHANNELS    : natural := 12;
@@ -126,7 +127,7 @@ begin  -- tb
    bus_to_stm.data <= bus_to_stm_from_timestamp.data or bus_to_stm_from_bram.data;
 
    -- The Block RAM
-   reg_file_bram_double_buffered_1 : reg_file_bram_double_buffered
+   reg_file_bram_double_buffered_1 : entity work.reg_file_bram_double_buffered
       generic map (
          BASE_ADDRESS => BASE_ADDRESS)
       port map (
@@ -145,7 +146,7 @@ begin  -- tb
          clk         => clk);
 
    -- The Pipeline
-   goertzel_pipelined_v2_1 : goertzel_pipelined_v2
+   goertzel_pipelined_v2_1 : entity work.goertzel_pipelined_v2
       generic map (
          FREQUENCIES => FREQUENCIES,
          CHANNELS    => CHANNELS,
@@ -165,7 +166,7 @@ begin  -- tb
 
    -- Take a timestamp whenever the goertzel pipeline finished a set of values
    -- and switches the bnak. 
-   timestamp_taker_1 : timestamp_taker
+   timestamp_taker_1 : entity work.timestamp_taker
       generic map (
          BASE_ADDRESS => BASE_ADDRESS_TIMESTAMP)
       port map (
@@ -175,10 +176,11 @@ begin  -- tb
          bank_y_i_p    => bank_y_s,
          bus_o         => bus_to_stm_from_timestamp,
          bus_i         => bus_i_dummy,
+         reset         => reset,
          clk           => clk);
 
    -- generate a timestamp
-   timestamp_generator_1 : timestamp_generator
+   timestamp_generator_1 : entity work.timestamp_generator
       port map (
          timestamp_o_p => timestamp_s,
          clk           => clk);

@@ -50,8 +50,8 @@ architecture tb of reg_file_bram_double_buffered_tb is
 
 begin  -- tb
 
-   -- component instantiation
-   DUT : reg_file_bram_double_buffered
+   -- entity instantiation
+   DUT : entity work.reg_file_bram_double_buffered
       generic map (
          BASE_ADDRESS => BASE_ADDRESS)
       port map (

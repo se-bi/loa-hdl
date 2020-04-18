@@ -51,7 +51,8 @@ entity uss_tx_module is
       bus_o : out busdevice_out_type;
       bus_i : in  busdevice_in_type;
 
-      clk : in std_logic
+      reset : in std_logic;
+      clk   : in std_logic
       );
 
 end uss_tx_module;
@@ -98,11 +99,11 @@ architecture behavioral of uss_tx_module is
 begin  -- behavioral
 
    -----------------------------------------------------------------------------
-   -- Component declarations
+   -- Entity declarations
    -----------------------------------------------------------------------------
 
    -- register for access to and from STM
-   reg_file_1 : reg_file
+   reg_file_1 : entity work.reg_file
       generic map (
          BASE_ADDRESS => BASE_ADDRESS,
          REG_ADDR_BIT => REG_ADDR_BIT
@@ -112,6 +113,7 @@ begin  -- behavioral
          bus_i => bus_i,
          reg_o => reg_o,
          reg_i => reg_i,
+         reset => reset,
          clk   => clk
          );
 
@@ -135,7 +137,7 @@ begin  -- behavioral
          clk       => clk);
 
    -- clock generation of clk_uss_tx (carrier)
-   fractional_clock_divider_variable_1 : fractional_clock_divider_variable
+   fractional_clock_divider_variable_1 : entity work.fractional_clock_divider_variable
       generic map (
          WIDTH => 16)
       port map (
@@ -158,7 +160,7 @@ begin  -- behavioral
    clk_uss_n <= not clk_uss;
 
    -- output to the H-bridges
-   deadtime_on : deadtime
+   deadtime_on : entity work.deadtime
       generic map (
          T_DEAD => 250)                 -- 5000ns
       port map (
@@ -166,7 +168,7 @@ begin  -- behavioral
          out_p => uss_tx_low,
          clk   => clk);
 
-   deadtime_off : deadtime
+   deadtime_off : entity work.deadtime
       generic map (
          T_DEAD => 250)                 -- 5000ns
       port map (

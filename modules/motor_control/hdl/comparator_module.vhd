@@ -45,6 +45,7 @@ entity comparator_module is
       bus_o : out busdevice_out_type;
       bus_i : in  busdevice_in_type;
 
+      reset : in std_logic;
       clk   : in std_logic
       );
 end comparator_module;
@@ -113,6 +114,7 @@ begin
          bus_i => bus_i,
          reg_o => reg_o,
          reg_i => reg_i,
+         reset => reset,
          clk   => clk);
 
 end behavioral;
