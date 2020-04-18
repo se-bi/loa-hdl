@@ -40,7 +40,8 @@ entity adc_ltc2351_module is
       -- direct access to the read adc samples
       adc_values_o : out adc_ltc2351_values_type(5 downto 0);
 
-      clk : in std_logic
+      reset : in std_logic;
+      clk   : in std_logic
       );
 end adc_ltc2351_module;
 
@@ -72,16 +73,6 @@ architecture behavioral of adc_ltc2351_module is
    signal reg_i : reg_file_type(7 downto 0);
 
 
-
-
-
-
-
-
-
-
-
-
    -----------------------------------------------------------------------------
    -- Component declarations
    -----------------------------------------------------------------------------
@@ -109,6 +100,7 @@ begin
          bus_i => bus_i,
          reg_o => reg_o,
          reg_i => reg_i,
+         reset => reset,
          clk   => clk
          );
 

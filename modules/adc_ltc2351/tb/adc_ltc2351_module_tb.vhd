@@ -49,12 +49,13 @@ architecture tb of adc_ltc2351_module_tb is
   signal sdo_p  : std_logic;
 
   -- clock
-  signal clk : std_logic := '1';
+  signal clk   : std_logic := '1';
+  signal reset : std_logic := '0';
 
 begin  -- tb
 
   -- component instantiation
-  DUT : adc_ltc2351_module
+  DUT : entity work.adc_ltc2351_module
     generic map (
       BASE_ADDRESS => BASE_ADDRESS
       )
@@ -65,6 +66,7 @@ begin  -- tb
       bus_i        => bus_i,
       adc_values_o => open,
       done_p       => open,
+      reset        => reset,
       clk          => clk
       );
 
