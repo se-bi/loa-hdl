@@ -8,11 +8,11 @@ TESTBENCH = ds18b20_tb
 
 # Common files
 FILES = \
-	../../hdl/onewire_pkg.vhd \
-	../../hdl/onewire_cfg_pkg.vhd \
-	../../hdl/onewire.vhd \
-	../../hdl/ds18b20.vhd \
-	../../hdl/ds18b20_pkg.vhd 
+	../../onewire/hdl/onewire_pkg.vhd \
+	../../onewire/hdl/onewire_cfg_pkg.vhd \
+	../../onewire/hdl/onewire.vhd \
+	../hdl/ds18b20_pkg.vhd \
+	../hdl/ds18b20.vhd
 
 # Default settings for gtkwave (visable signal etc.)
 #  use gtkwave > File > Write Save File (Strg + S) to generate the file

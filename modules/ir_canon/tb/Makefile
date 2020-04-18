@@ -5,9 +5,9 @@ TESTBENCH = ir_canon_tb
 
 # Common files
 FILES = \
-	../../hdl/ir_canon_pkg.vhd \
-	../../hdl/ir_canon_cfg_pkg.vhd \
-	../../hdl/ir_canon.vhd \
+	../hdl/ir_canon_pkg.vhd \
+	../hdl/ir_canon_cfg_pkg.vhd \
+	../hdl/ir_canon.vhd \
 
 # Default settings for gtkwave (visable signal etc.)
 #  use gtkwave > File > Write Save File (Strg + S) to generate the file

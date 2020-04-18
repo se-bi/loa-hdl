@@ -4,12 +4,13 @@ TESTBENCH = fsmcslave_tb
 
 # VHDL files
 FILES = \
-../../hdl/fsmcslave_pkg.vhd \
-../../hdl/fsmcslave.vhd  \
-../../hdl/bus_pkg.vhd \
-../../hdl/reg_file.vhd \
-../../hdl/peripheral_register.vhd \
-../../hdl/reg_file_pkg.vhd 
+../../core/hdl/bus_pkg.vhd \
+../../core/hdl/reset_pkg.vhd \
+../../peripheral_register/hdl/reg_file.vhd \
+../../peripheral_register/hdl/peripheral_register.vhd \
+../../peripheral_register/hdl/reg_file_pkg.vhd \
+../hdl/fsmcslave_pkg.vhd \
+../hdl/fsmcslave.vhd
 
 # Default settings for gtkwave (visable signal etc.)
 #  use gtkwave > File > Write Save File (Strg + S) to generate the file

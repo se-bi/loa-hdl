@@ -5,9 +5,9 @@ TESTBENCH = shiftout_tb
 # VHDL files
 ifeq ($(TESTBENCH),shiftout_tb)
 FILES =  \
-	../../hdl/shiftout.vhd \
-	../../hdl/utils_pkg.vhd \
-	../../hdl/clock_divider.vhd
+	../hdl/shiftout.vhd \
+	../../utils/hdl/utils_pkg.vhd \
+	../../utils/hdl/clock_divider.vhd
 GHDL_SIM_OPT = --stop-time=4us
 endif
 

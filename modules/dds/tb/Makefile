@@ -4,18 +4,18 @@ TESTBENCH = dds_module_tb
 
 # VHDL files
 FILES =  \
-	../../hdl/dds_module.vhd \
-	../../hdl/dds_module_pkg.vhd \
-	../../hdl/nco.vhd \
-	../../hdl/nco_pkg.vhd \
-	../../hdl/peripheral_register.vhd \
-	../../hdl/reset_pkg.vhd \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/reg_file_bram.vhd \
-	../../hdl/xilinx_block_ram_pkg.vhd \
-	../../hdl/xilinx_block_ram.vhd \
-	../../hdl/utils_pkg.vhd \
-	../../hdl/reg_file_pkg.vhd
+	../../core/hdl/reset_pkg.vhd \
+	../../core/hdl/bus_pkg.vhd \
+	../../peripheral_register/hdl/reg_file_pkg.vhd \
+	../../peripheral_register/hdl/peripheral_register.vhd \
+	../../peripheral_register/hdl/reg_file_bram.vhd \
+	../../ram/hdl/xilinx_block_ram_pkg.vhd \
+	../../ram/hdl/xilinx_block_ram.vhd \
+	../../utils/hdl/utils_pkg.vhd \
+	../hdl/dds_module_pkg.vhd \
+	../hdl/dds_module.vhd \
+	../hdl/nco_pkg.vhd \
+	../hdl/nco.vhd
 
 # Default settings for gtkwave (visable signal etc.)
 #  use gtkwave > File > Write Save File (Strg + S) to generate the file

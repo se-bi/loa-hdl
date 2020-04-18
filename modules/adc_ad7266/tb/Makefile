@@ -7,8 +7,8 @@ TESTBENCH ?= adc_ad7266_module_tb
 ifeq ($(TESTBENCH), adc_ad7266_single_ended_tb)
 FILES = \
 	../../core/hdl/bus_pkg.vhd \
-	../hdl/adc_ad7266.vhd \
-	../hdl/adc_ad7266_pkg.vhd
+	../../hdl/adc_ad7266.vhd \
+	../../hdl/adc_ad7266_pkg.vhd
 else ifeq ($(TESTBENCH), adc_ad7266_module_tb)
 FILES = \
 	../../core/hdl/bus_pkg.vhd \

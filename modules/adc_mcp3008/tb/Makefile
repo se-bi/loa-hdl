@@ -1,22 +1,23 @@
 
 # Name of the testbench without extenstion
 #TESTBENCH = adc_mcp3008_tb
-TESTBENCH = adc_mcp3008_module_tb
+TESTBENCH ?= adc_mcp3008_module_tb
 
 # VHDL files
 ifeq ($(TESTBENCH), adc_mcp3008_tb)
 FILES = \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/adc_mcp3008.vhd \
-	../../hdl/adc_mcp3008_pkg.vhd 
+	../../core/hdl/bus_pkg.vhd \
+	../hdl/adc_mcp3008.vhd \
+	../hdl/adc_mcp3008_pkg.vhd 
 else ifeq ($(TESTBENCH), adc_mcp3008_module_tb)
 FILES = \
-	../../hdl/bus_pkg.vhd \
-	../../hdl/reg_file_pkg.vhd \
-	../../hdl/reg_file.vhd \
-	../../hdl/adc_mcp3008.vhd \
-	../../hdl/adc_mcp3008_pkg.vhd \
-	../../hdl/adc_mcp3008_module.vhd \
+	../../core/hdl/bus_pkg.vhd \
+	../../core/hdl/reset_pkg.vhd\
+	../../peripheral_register/hdl/reg_file_pkg.vhd \
+	../../peripheral_register/hdl/reg_file.vhd \
+	../hdl/adc_mcp3008.vhd \
+	../hdl/adc_mcp3008_pkg.vhd \
+	../hdl/adc_mcp3008_module.vhd \
 	adc_mcp3008_module_tb.vhd 
 endif
 

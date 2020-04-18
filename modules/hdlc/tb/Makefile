@@ -1,25 +1,27 @@
 
 # Name of the testbench without extenstion
 #TESTBENCH = hdlc_tb
-TESTBENCH = hdlc_busmaster_tb
+TESTBENCH ?= hdlc_busmaster_tb
 
 # VHDL files
 ifeq ($(TESTBENCH), hdlc_tb)
 FILES = \
-../../hdl/hdlc_dec.vhd \
-../../hdl/hdlc_enc.vhd \
-../../hdl/hdlc_pkg.vhd \
-../../hdl/bus_pkg.vhd   
+../../core/hdl/bus_pkg.vhd \
+../../core/hdl/reset_pkg.vhd \
+../hdl/hdlc_dec.vhd \
+../hdl/hdlc_enc.vhd \
+../hdl/hdlc_pkg.vhd
 else ifeq ($(TESTBENCH), hdlc_busmaster_tb)
 FILES = \
-../../hdl/hdlc_dec.vhd \
-../../hdl/hdlc_enc.vhd \
-../../hdl/hdlc_pkg.vhd \
-../../hdl/hdlc_busmaster.vhd \
-../../hdl/hdlc_crc_pkg.vhd \
-../../hdl/bus_pkg.vhd \
-../../hdl/peripheral_register.vhd  \
-../../hdl/reg_file_pkg.vhd
+../../core/hdl/bus_pkg.vhd \
+../../core/hdl/reset_pkg.vhd \
+../../peripheral_register/hdl/peripheral_register.vhd  \
+../../peripheral_register/hdl/reg_file_pkg.vhd \
+../hdl/hdlc_dec.vhd \
+../hdl/hdlc_enc.vhd \
+../hdl/hdlc_pkg.vhd \
+../hdl/hdlc_busmaster.vhd \
+../hdl/hdlc_crc_pkg.vhd
 endif
 
 # Default settings for gtkwave (visable signal etc.)
