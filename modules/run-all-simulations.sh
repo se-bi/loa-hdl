@@ -4,10 +4,13 @@ set -eux
 
 for i in */
 do
-  echo "Module $i"
-  pushd $i/tb
+  if [ -d $i/tb ]
+  then
+    echo "Module $i"
+    pushd $i/tb
 
-  make run
+    make run
 
-  popd
+    popd
+  fi
 done
